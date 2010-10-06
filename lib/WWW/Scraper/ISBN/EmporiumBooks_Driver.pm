@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION @ISA);
-$VERSION = '0.02';
+$VERSION = '0.03';
 
 #--------------------------------------------------------------------------
 
@@ -51,8 +51,8 @@ my ($URL1,$URL2,$URL3) = ('http://www.emporiumbooks.com.au/','<h3 class="bookTit
 
 =item C<search()>
 
-Creates a query string, then passes the appropriate form fields to the Word 
-Power server.
+Creates a query string, then passes the appropriate form fields to the 
+Emporium Books server.
 
 The returned page should be the correct catalog page for that ISBN. If not the
 function returns zero and allows the next driver in the chain to have a go. If
