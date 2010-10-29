@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION @ISA);
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 #--------------------------------------------------------------------------
 
@@ -143,7 +143,7 @@ sub search {
     ($data->{width},$data->{height})    = $html =~ m!<b>Dimensions:</b>\s*Width: ([\d.]+)cm\s*,\s*Height: [\d.]+cm\s*,\s*Length: ([\d.]+)cm!si;
     ($data->{weight})                   = $html =~ m!<b>Weight:</b>\s*([\d.]+)kg<br />!si;
     ($data->{author})                   = $html =~ m!<b>Author:</b>\s*<a href="[^"]+" title="[^"]+">([^<]+)</a><br />!si;
-    ($data->{image})                    = $html =~ m!"/(images/products/\d+/\d+/\d+/\d+.jpg)"!si;
+    ($data->{image})                    = $html =~ m!"/(images/products/\d+/\d+/\d+/$data->{isbn13}.jpg)"!si;
     ($data->{description})              = $html =~ m!<h3>Overview</h3>\s*<p>([^<]+)!si;
 
     $data->{width}  = int($data->{width}  * 10)     if($data->{width});

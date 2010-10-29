@@ -25,8 +25,8 @@ my %tests = (
         [ 'is',     'width',        undef               ],
         [ 'is',     'height',       undef               ],
         [ 'is',     'weight',       undef               ],
-        [ 'is',     'image_link',   'http://www.emporiumbooks.com.au/images/products/978/174/166/9781741668957.jpg' ],
-        [ 'is',     'thumb_link',   'http://www.emporiumbooks.com.au/images/products/978/174/166/9781741668957.jpg' ],
+        [ 'is',     'image_link',   'http://www.emporiumbooks.com.au/images/products/978/055/255/9780552557801.jpg' ],
+        [ 'is',     'thumb_link',   'http://www.emporiumbooks.com.au/images/products/978/055/255/9780552557801.jpg' ],
         [ 'like',   'description',  qr|When a giant wave destroys his entire Nation| ],
         [ 'like',   'book_link',    qr|http://www.emporiumbooks.com.au//book/nation-9780552557801.do| ]
     ],
@@ -44,8 +44,8 @@ my %tests = (
         [ 'is',     'width',        129                 ],
         [ 'is',     'height',       198                 ],
         [ 'is',     'weight',       200                 ],
-        [ 'is',     'image_link',   'http://www.emporiumbooks.com.au/images/products/978/174/166/9781741668957.jpg' ],
-        [ 'is',     'thumb_link',   'http://www.emporiumbooks.com.au/images/products/978/174/166/9781741668957.jpg' ],
+        [ 'is',     'image_link',   'http://www.emporiumbooks.com.au/images/products/978/057/123/9780571239566.jpg' ],
+        [ 'is',     'thumb_link',   'http://www.emporiumbooks.com.au/images/products/978/057/123/9780571239566.jpg' ],
         [ 'like',   'description',  qr|Ian Curtis left behind a legacy rich in artistic genius| ],
         [ 'like',   'book_link',    qr|http://www.emporiumbooks.com.au//book/touching-from-a-distance-9780571239566.do| ]
     ],
@@ -118,8 +118,12 @@ sub pingtest {
                 $^O =~ /dos|os2|mswin32|netware|cygwin/i    ? "ping -n 1 $domain "
                                                             : "ping -c 1 $domain >/dev/null 2>&1";
 
-    system($cmd);
-    my $retcode = $? >> 8;
-    # ping returns 1 if unable to connect
+    eval { system($cmd) }; 
+    if($@) {                # can't find ping, or wrong arguments?
+        diag();
+        return 1;
+    }
+
+    my $retcode = $? >> 8;  # ping returns 1 if unable to connect
     return $retcode;
 }
