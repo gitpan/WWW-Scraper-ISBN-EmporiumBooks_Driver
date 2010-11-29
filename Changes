@@ -1,5 +1,8 @@
 Revision history for Perl extension WWW-Scraper-ISBN-EmporiumBooks_Driver.
 
+0.05    29/11/2010
+        - added further skip test if test books are withdrawn from the site.
+
 0.04    29/10/2010
         - amended pingtest() in network tests.
         - update to image extract pattern.

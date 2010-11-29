@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION @ISA);
-$VERSION = '0.04';
+$VERSION = '0.05';
 
 #--------------------------------------------------------------------------
 
@@ -89,7 +89,7 @@ sub search {
 
 	my $mech = WWW::Mechanize->new();
     $mech->quiet(1);
-    $mech->agent_alias( 'Windows IE 6' );
+    $mech->agent_alias( 'Linux Mozilla' );
     $mech->add_header('Accept-Encoding' => undef);
 
     my $url = sprintf SEARCH, $isbn, $isbn, $isbn;
