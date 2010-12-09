@@ -1,5 +1,8 @@
 Revision history for Perl extension WWW-Scraper-ISBN-EmporiumBooks_Driver.
 
+0.06    09/12/2010
+        - added check to verify extract found some data.
+
 0.05    29/11/2010
         - added further skip test if test books are withdrawn from the site.
 

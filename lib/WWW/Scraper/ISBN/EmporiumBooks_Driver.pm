@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use vars qw($VERSION @ISA);
-$VERSION = '0.05';
+$VERSION = '0.06';
 
 #--------------------------------------------------------------------------
 
@@ -162,12 +162,17 @@ sub search {
 		unless(defined $data);
 
 	# trim top and tail
+    my $match = 0;
 	foreach (keys %$data) { 
         next unless(defined $data->{$_});
         $data->{$_} =~ s!&nbsp;! !g;
         $data->{$_} =~ s/^\s+//;
         $data->{$_} =~ s/\s+$//;
+        $match = 1  if($data->{$_});
     }
+
+	return $self->handler("Could not extract data from EmporiumBooks result page.")
+		unless($match);
 
 	my $bk = {
 		'ean13'		    => $data->{isbn13},
